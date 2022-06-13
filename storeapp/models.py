@@ -7,3 +7,6 @@ class Product(models.Model):
     price = models.IntegerField()
     unit = models.CharField(max_length=32)
     arrived_from = models.CharField(max_length=64)
+
+    def __str__(self):
+        return f'{self.name} from {self.arrived_from}'
