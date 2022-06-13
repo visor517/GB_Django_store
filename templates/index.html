@@ -1,15 +1,28 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    {% for object in object_list %}
-        <div>{{ object.name }}</div>
-    {% endfor %}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Список продуктов{% endblock %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Название</th>
+                <th scope="col">Дата</th>
+                <th scope="col">Цена</th>
+                <th scope="col">ед.</th>
+                <th scope="col">от куда</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <th>{{ object.name }}</th>
+                    <td>{{ object.arrived_at }}</td>
+                    <td>{{ object.price }}</td>
+                    <td>{{ object.unit }}</td>
+                    <td>{{ object.arrived_from }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
