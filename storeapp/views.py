@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from .models import Product
+from .models import Category, Product
 
 
 class ProductListView(ListView):
@@ -9,5 +9,5 @@ class ProductListView(ListView):
     queryset = Product.objects.all()
     template_name = 'index.html'
     extra_context = {
-        'categories': [1, 2]
+        'categories': Category.objects.all()
     }
