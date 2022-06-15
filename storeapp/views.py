@@ -8,3 +8,6 @@ class ProductListView(ListView):
     model = Product
     queryset = Product.objects.all()
     template_name = 'index.html'
+    extra_context = {
+        'categories': [1, 2]
+    }
