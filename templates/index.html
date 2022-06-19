@@ -28,7 +28,11 @@
                             {{ category.name }}
                         {% endfor %}
                     </td>
-                    <td>{{ object.site }}</td>
+                    <td>
+                        {% for item in object.site.all %}
+                            {{ item }}
+                        {% endfor %}
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

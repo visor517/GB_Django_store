@@ -12,12 +12,12 @@ class ProductListView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context.update({
-            'categories': Category.objects.all(),
+            'categories': Category.on_site.all(),
             'site': get_current_site(request=self.request),
         })
         return context
 
     def get_queryset(self):
         if 'pk' in self.kwargs:
-            return Product.objects.prefetch_related('categories').filter(categories=self.kwargs['pk'])
-        return Product.objects.prefetch_related('categories').all()
+            return Product.on_site.prefetch_related('categories').filter(categories=self.kwargs['pk'])
+        return Product.on_site.prefetch_related('categories').all()
