@@ -12,6 +12,7 @@
                 <th scope="col">ед.</th>
                 <th scope="col">от куда</th>
                 <th scope="col">Категории</th>
+                <th scope="col">Сайт</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,11 @@
                     <td>
                         {% for category in object.categories.all %}
                             {{ category.name }}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for item in object.site.all %}
+                            {{ item }}
                         {% endfor %}
                     </td>
                 </tr>
