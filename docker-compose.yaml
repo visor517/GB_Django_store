@@ -16,9 +16,18 @@ services:
   backend:
     build:
       context: ./store
-    ports:
-      - 8000:8000
+    expose:
+      - 8000
     command: bash -c "python manage.py migrate && gunicorn store.wsgi -b 0.0.0.0:8000"
     environment:
-      DJANGO_SETTINGS_MODULE: store.settings.debug_ext
+      DJANGO_SETTINGS_MODULE: store.settings.site1
+    depends_on:
+      - db
 
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - 8080:8080
+    depends_on:
+      - backend
